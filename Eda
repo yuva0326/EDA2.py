@@ -1,0 +1,14 @@
+# Basic info
+print(df.info())
+print(df['category'].value_counts())
+# Plot category distribution
+plt.figure(figsize=(10,5))
+sns.countplot(data=df, x='category', order=df['category'].value_counts().index)
+plt.title('Query Category Distribution')
+plt.xticks(rotation=45)
+plt.show()
+# Query length distribution
+df['query_length'] = df['query'].apply(lambda x: len(str(x)))
+sns.histplot(df['query_length'], bins=50, kde=True)
+plt.title("Query Length Distribution")
+plt.show()
